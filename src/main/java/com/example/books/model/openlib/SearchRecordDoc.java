@@ -15,6 +15,7 @@ public class SearchRecordDoc {
     private String key;
     private String title;
     private String[] author_name;
+    private int cover_i;
     private int first_publish_year;
     private int number_of_pages_median;
     private String[] isbn;
