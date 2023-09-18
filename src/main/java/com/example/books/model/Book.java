@@ -11,8 +11,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Book {
 
+    private String uuid;
     private String title;
     private String author;
+    private String coverImg;
+    private int pages;
     private String isbn;
     private String openLibLink;
     private String bookshopLink;

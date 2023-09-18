@@ -29,8 +29,15 @@ public class BookServiceImpl implements BookService {
         if (optionalResult.isPresent()) {
             SearchRecordDoc record = optionalResult.get();
 
+            // remove path segment from key to reuse as an ID
+            book.setUuid(record.getKey().replace("/works/", ""));
+
             book.setTitle(record.getTitle());
             book.setAuthor(record.getAuthor_name()[0]);
+            book.setPages(record.getNumber_of_pages_median());
+
+            // reformat cover image and Open Library record as URLs
+            book.setCoverImg(Constants.OPENLIB_COVER_FORMAT.formatted(record.getCover_i()));
             book.setOpenLibLink(Constants.OPENLIB_BASE_URL + record.getKey());
         } else {
             book.setTitle("Not Found");
